@@ -4,7 +4,7 @@ import { Images } from "../../assets/Images";
 
 import { Component } from "react";
 
-const initialFishes = [
+export const initialFishes = [
   {
     name: "trout",
     url: Images.trout,
@@ -24,26 +24,26 @@ const initialFishes = [
 ];
 
 export class ClassGameBoard extends Component {
-  state = {
-    fishGuessInput: "",
-    fishes: initialFishes,
-    correctCount: 0,
-    incorrectCount: 0,
-
-    nextFishToName: this.props.nextFishToName,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      fishGuessInput: "",
+    };
+  }
 
   render() {
-    const nextFishToName = initialFishes[0];
+    const { nextFishToHandleAnswer, index } = this.props;
+
     return (
       <div id="game-board">
         <div id="fish-container">
-          <img src={nextFishToName.url} alt={nextFishToName.name} />
+          <img src={initialFishes[index].url} alt={initialFishes[index].name} />
         </div>
         <form
           id="fish-guess-form"
           onSubmit={(e) => {
             e.preventDefault();
+            nextFishToHandleAnswer(this.state.fishGuessInput);
             this.setState({
               fishGuessInput: "",
             });
@@ -52,75 +52,17 @@ export class ClassGameBoard extends Component {
           <label htmlFor="fish-guess">What kind of fish is this?</label>
           <input
             type="text"
-            name="fish-guess"
             value={this.state.fishGuessInput}
+            name="fish-guess"
             onChange={(e) => {
               this.setState({
                 fishGuessInput: e.target.value,
-                correctCount: 0,
               });
             }}
           />
-          <input type="submit" />
+          <input type="submit" value="Submit" />
         </form>
       </div>
     );
   }
 }
-
-// export class ClassGameBoard extends Component {
-//   constructor(props) {
-
-//     super(props);
-//     this.state = {
-//       fishGuessInput: "",
-//       fishes: initialFishes,
-//       correctCount: 0,
-//       incorrectCount: 0,
-//       nextFishToName: initialFishes[0],
-//     };
-//   }
-
-//   handleFishGuessInputChange = (e) => {
-//  this.setState({
-//       fishGuessInput: e.target.value,
-//       correctCount: 0,
-//     });
-//   };
-//   handleFishGuessSubmit = (e) => {
-//     e.preventDefault();
-//     const { fishGuessInput, fishes, correctCount, incorrectCount } = this.state;
-//     const newFishes = fishes.filter(
-//       (fish) => fish.name!== fishGuessInput
-//     );
-//     if (newFishes.length === 0) {
-//       this.props.showTheResults();
-//     }
-//     this.setState({
-//       fishes: newFishes,
-//       fishGuessInput: "",
-//       correctCount: correctCount + 1, // add 1 to correctCount
-//       incorrectCount: incorrectCount - 1, // subtract 1 from incorrectCount
-//       nextFishToName: newFishes[0],
-//     });
-
-//   }
-
-//   render() {
-//     const nextFishToName = initialFishes[0];
-//     return (
-//       <div id="game-board">
-//         <div id="fish-container">
-//           <img src={nextFishToName.url}
-//             onSubmit = {this.handleFishGuessSubmit}
-//            alt={nextFishToName.name} />
-//         </div>
-//         <form id="fish-guess-form">
-//           <label htmlFor="fish-guess">What kind of fish is this?</label>
-//           <input type="text" name="fish-guess" />
-//           <input type="submit" />
-//         </form>
-//       </div>
-//     );
-//   }
-// }
