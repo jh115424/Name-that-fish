@@ -21,4 +21,3 @@ export class ClassScoreBoard extends Component {
     );
   }
 }
-
