@@ -1,14 +1,12 @@
 import "./styles/score-board.css";
-import { useState } from "react";
+//  Where the score is presented
 
-
-
+const incorrectCount = 0;
+const correctCount = 0;
 const answersLeft = ["trout", "salmon", "tuna", "shark"];
 
 export function FunctionalScoreBoard() {
- const [correctCount, incorrectCount] = useState(0);
-
-
+  
   return (
     <div id="score-board">
       <div>Incorrect 🔻: {incorrectCount}</div>
@@ -23,15 +21,3 @@ export function FunctionalScoreBoard() {
     </div>
   );
 }
-  
-        
-         
-
-  
-
-
-
-
-
-
-

@@ -3,7 +3,6 @@ import "./styles/score-board.css";
 
 export class ClassScoreBoard extends Component {
   render() {
-    // const answersLeft = ["trout", "salmon", "tuna", "shark"];
     const { incorrectCount, correctCount, answersLeft } = this.props;
 
     return (
@@ -21,3 +20,4 @@ export class ClassScoreBoard extends Component {
     );
   }
 }
+

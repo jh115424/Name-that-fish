@@ -32,7 +32,7 @@ export class ClassGameBoard extends Component {
   }
 
   render() {
-    const { nextFishToHandleAnswer, index, initialFishes } = this.props;
+    const { nextFishToHandleAnswer, index } = this.props;
 
     return (
       <div id="game-board">

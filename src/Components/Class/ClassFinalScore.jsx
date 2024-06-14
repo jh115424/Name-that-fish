@@ -9,13 +9,6 @@ export class ClassFinalScore extends Component {
       totalCount: 4,
     };
   }
-  // handleNewEntryChange = () => {
-  //   this.setState({
-  //     correctCount: this.state.correctCount + 1,
-  //     incorrectCount: this.state.incorrectCount - 1,
-
-  //   });
-  // };
 
   render() {
     const { correctCount, incorrectCount } = this.props;

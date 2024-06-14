@@ -3,7 +3,6 @@ import { ClassScoreBoard } from "./ClassScoreBoard";
 import { ClassGameBoard, initialFishes } from "./ClassGameBoard";
 import { ClassFinalScore } from "./ClassFinalScore";
 
-
 export class ClassApp extends Component {
   state = {
     incorrectCount: 0,
@@ -25,28 +24,29 @@ export class ClassApp extends Component {
   };
 
   render() {
+    const { incorrectCount, correctCount } = this.state;
+    const index = correctCount + incorrectCount;
+    const answersLeftArr = initialFishes.slice(index).map((fish) => fish.name);
 
-    
     return (
       <>
-        <>
-          <ClassScoreBoard
-            incorrectCount={this.state.incorrectCount}
-            correctCount={this.state.correctCount}
-            answersLeft={initialFishes.map((fish) => fish.name)}
-          />
+        {answersLeftArr.length > 0 ? (
+          <>
+            <ClassScoreBoard
+              incorrectCount={incorrectCount}
+              correctCount={correctCount}
+              answersLeft={answersLeftArr}
+            />
 
-          <ClassGameBoard
-            nextFishToHandleAnswer={this.nextFishToHandleAnswer}
-            index={this.state.index}
-          />
-        </>
-        {false && (
+            <ClassGameBoard
+              nextFishToHandleAnswer={this.nextFishToHandleAnswer}
+              index={index}
+            />
+          </>
+        ) : (
           <ClassFinalScore
-            answersLeft={initialFishes.map((fish) => fish.name)}
-            correctCount={this.state.correctCount}
-            incorrectCount={this.state.incorrectCount}
-        
+            correctCount={correctCount}
+            incorrectCount={incorrectCount}
           />
         )}
       </>
