@@ -21,39 +21,28 @@ const initialFishes = [
   },
 ];
 
-
-
-
 export function FunctionalGameBoard() {
-const [fishState, setFishState] = useState({})
-  
-
-
+  const [fishGuess, setFishGuess] = useState("");
 
   const nextFishToName = initialFishes[0];
-  
   return (
     <div id="game-board">
       <div id="fish-container">
         <img src={nextFishToName.url} alt={nextFishToName.name} />
       </div>
-      <form id="fish-guess-form">
+      <form
+        id="fish-guess-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          setFishGuess("");
+        }}
+      >
         <label htmlFor="fish-guess">What kind of fish is this?</label>
         <input
           type="text"
+          value={fishGuess}
           name="fish-guess"
-          onChange={() =>
-            setFishState({
-              fishGuessInput: fishState.fishGuessInput,
-              // correctCount: fishState.correctCount,
-              // incorrectCount: fishState.incorrectCount,
-              index: fishState.index + 1,
-
-           
-
-            })
-
-          }
+          onChange={(e) => setFishGuess(e.target.value)}
         />
         <input type="submit" />
       </form>

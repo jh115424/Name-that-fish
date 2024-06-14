@@ -3,17 +3,14 @@ import { FunctionalScoreBoard } from "./FunctionalScoreBoard";
 import { FunctionalFinalScore } from "./FunctionalFinalScore";
 
 export function FunctionalApp() {
-
-
-
   
 
 
-
   return (
+
     <>
       <FunctionalScoreBoard />
-      <FunctionalGameBoard />
+      <FunctionalGameBoard   />
       {false && <FunctionalFinalScore />}
     </>
   );
