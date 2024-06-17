@@ -1,4 +1,5 @@
 import "./styles/score-board.css";
+
 //  Where the score is presented
 
 const incorrectCount = 0;
@@ -6,7 +7,6 @@ const correctCount = 0;
 const answersLeft = ["trout", "salmon", "tuna", "shark"];
 
 export function FunctionalScoreBoard() {
-  
   return (
     <div id="score-board">
       <div>Incorrect 🔻: {incorrectCount}</div>
@@ -17,7 +17,10 @@ export function FunctionalScoreBoard() {
           </div>
         ))}
       </div>
-      <div>Correct ✅: {correctCount}</div>
+      <div>
+        Correct ✅:
+        {correctCount}
+      </div>
     </div>
   );
 }

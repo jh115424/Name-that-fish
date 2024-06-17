@@ -4,6 +4,7 @@ import "./styles/score-board.css";
 export class ClassScoreBoard extends Component {
   render() {
     const { incorrectCount, correctCount, answersLeft } = this.props;
+    
 
     return (
       <div id="score-board">
