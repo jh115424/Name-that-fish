@@ -22,9 +22,16 @@ const initialFishes = [
 ];
 // destructuring // what doe we need to also pass down from the parent so that we can access and update state in the parent?
 export function FunctionalGameBoard(props) {
-  const [userInput, setUserInput] = useState(""); // where are we tracking the user guess and where do we need it to go on click? 
+  const [userInput, setUserInput] = useState("");
 
-  const { correctCount, incorrectCount, index, fishGuess, nextFishToHandleAnswer, setState } = props;
+  const {
+    incorrectCount,
+    correctCount,
+    index,
+    fishGuess,
+    nextFishToHandleAnswer,
+    setState,
+  } = props;
   return (
     <div id="game-board">
       <div id="fish-container">
@@ -33,23 +40,21 @@ export function FunctionalGameBoard(props) {
       <form
         id="fish-guess-form"
         onSubmit={(e) => {
-           nextFishToHandleAnswer(userInput);
+          nextFishToHandleAnswer(userInput);
           e.preventDefault();
-          nextFishToHandleAnswer.name === fishGuess;
-      
-           // with the new state, figure out how to reference the value want! 
-          // what other logic goes here?
+
           setState({
             fishGuess: "",
-            // index: index + 1,
-
-            
-            correctCount: correctCount + 1,
-            incorrectCount: incorrectCount + 1,
+            userInput: "",
+            correctCount:
+              userInput === initialFishes[index].name
+                ? correctCount + 1
+                : correctCount,
+            incorrectCount:
+              userInput !== initialFishes[index].name
+                ? incorrectCount + 1
+                : incorrectCount,
           });
-          // if the guess was correct, we need to increment our correct answers in state
-          // if the guess was incorrect, we need to increment out incorrect answers in state
-        
         }}
       >
         <label htmlFor="fish-guess">What kind of fish is this?</label>

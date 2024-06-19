@@ -11,8 +11,9 @@ export class ClassFinalScore extends Component {
   }
 
   render() {
-    const { correctCount, incorrectCount } = this.props;
-    const totalCount = correctCount + incorrectCount;
+    const { correctCount, totalCount } = this.state;
+    // const { correctCount, incorrectCount } = this.props;
+    // const totalCount = correctCount + incorrectCount;
 
     return (
       <div id="final-score">

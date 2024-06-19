@@ -44,7 +44,8 @@ export function FunctionalApp() {
             index={index}
             correctCount={correctCount}
             incorrectCount={incorrectCount}
-            setState={setState}
+ 
+            
           />
         </>
       ) : (
@@ -52,6 +53,7 @@ export function FunctionalApp() {
           correctCount={correctCount}
           incorrectCount={incorrectCount}
           answersLeft={answersLeftArr}
+ 
         />
       )}
     </>
