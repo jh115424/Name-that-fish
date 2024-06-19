@@ -12,15 +12,16 @@ export function FunctionalApp() {
   });
 
   const nextFishToHandleAnswer = (fishNames) => {
-    // const { index, incorrectCount, correctCount } = state;
-    initialFishes[index].name === fishNames
+    initialFishes[state.index].name === fishNames
       ? setState({
-          correctCount: correctCount + 1,
-          index: index + 1,
+          ...state,
+          correctCount: state.correctCount + 1,
+          index: state.index + 1,
         })
       : setState({
-          incorrectCount: incorrectCount + 1,
-          index: index + 1,
+          ...state,
+          incorrectCount: state.incorrectCount + 1,
+          index: state.index + 1,
         });
   };
   const { incorrectCount, correctCount } = state;
@@ -41,13 +42,16 @@ export function FunctionalApp() {
           <FunctionalGameBoard
             nextFishToHandleAnswer={nextFishToHandleAnswer}
             index={index}
+            correctCount={correctCount}
+            incorrectCount={incorrectCount}
+            setState={setState}
           />
         </>
       ) : (
         <FunctionalFinalScore
           correctCount={correctCount}
           incorrectCount={incorrectCount}
-          totalCount={correctCount + incorrectCount}
+          answersLeft={answersLeftArr}
         />
       )}
     </>

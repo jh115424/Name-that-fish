@@ -20,11 +20,11 @@ const initialFishes = [
     url: Images.shark,
   },
 ];
-
+// destructuring // what doe we need to also pass down from the parent so that we can access and update state in the parent?
 export function FunctionalGameBoard(props) {
-  const [fishGuess, setFishGuess] = useState("");
+  const [userInput, setUserInput] = useState(""); // where are we tracking the user guess and where do we need it to go on click? 
 
-  const { nextFishToHandleAnswer, index } = props;
+  const { correctCount, incorrectCount, index, fishGuess, nextFishToHandleAnswer, setState } = props;
   return (
     <div id="game-board">
       <div id="fish-container">
@@ -33,12 +33,23 @@ export function FunctionalGameBoard(props) {
       <form
         id="fish-guess-form"
         onSubmit={(e) => {
+           nextFishToHandleAnswer(userInput);
           e.preventDefault();
           nextFishToHandleAnswer.name === fishGuess;
-          setFishGuess("");
-          this.setState({
-            fishGuessInput: "",
+      
+           // with the new state, figure out how to reference the value want! 
+          // what other logic goes here?
+          setState({
+            fishGuess: "",
+            // index: index + 1,
+
+            
+            correctCount: correctCount + 1,
+            incorrectCount: incorrectCount + 1,
           });
+          // if the guess was correct, we need to increment our correct answers in state
+          // if the guess was incorrect, we need to increment out incorrect answers in state
+        
         }}
       >
         <label htmlFor="fish-guess">What kind of fish is this?</label>
@@ -46,7 +57,9 @@ export function FunctionalGameBoard(props) {
           type="text"
           value={fishGuess}
           name="fish-guess"
-          onChange={(e) => setFishGuess(e.target.value)}
+          onChange={(e) => {
+            setUserInput(e.target.value);
+          }}
         />
         <input type="submit" value="Submit" />
       </form>
