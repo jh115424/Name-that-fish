@@ -4,7 +4,7 @@ import "./styles/score-board.css";
 
 export const FunctionalScoreBoard = ({
   answersLeft,
-  correctCount = 0,
+  correctCount,
   incorrectCount,
 }) => {
   return (
@@ -12,20 +12,15 @@ export const FunctionalScoreBoard = ({
       <div>Incorrect 🔻: {incorrectCount}</div>
       <div id="choices-left">
         {answersLeft.map((answer) => (
-          <div key={answer}
-           
-      
-               className="choice">
-            {answer} 
+          <div key={answer} value={incorrectCount} className="choice">
+            {answer}
           </div>
         ))}
       </div>
-      <div>Correct ✅:
-
-      { correctCount}</div>
-
-     
-   
+      <div>
+        Correct ✅:
+        {correctCount}
+      </div>
     </div>
-);
-        }
+  );
+};

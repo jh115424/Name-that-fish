@@ -8,14 +8,11 @@ export function FunctionalApp() {
   const [state, setState] = useState({
     incorrectCount: 0,
     correctCount: 0,
-    name: "",
-
-    // fishGuess: "",
     index: 0,
   });
 
   const nextFishToHandleAnswer = (fishNames) => {
-    initialFishes[state.index].name === fishNames
+    initialFishes[state.index].toLowerCase() === fishNames.toLowerCase()
       ? setState({
           ...state,
           correctCount: state.correctCount + 1,
@@ -31,9 +28,7 @@ export function FunctionalApp() {
 
   const index = correctCount + incorrectCount;
 
-
   const answersLeftArr = initialFishes.slice(index).map((fish) => fish);
-
 
   return (
     <>
@@ -43,16 +38,10 @@ export function FunctionalApp() {
             incorrectCount={incorrectCount}
             correctCount={correctCount}
             answersLeft={answersLeftArr}
-    
           />
           <FunctionalGameBoard
             nextFishToHandleAnswer={nextFishToHandleAnswer}
             index={index}
-
-         
-      
-
-     
           />
         </>
       ) : (
@@ -60,7 +49,6 @@ export function FunctionalApp() {
           correctCount={correctCount}
           incorrectCount={incorrectCount}
           totalCount={correctCount + incorrectCount}
-
         />
       )}
     </>
