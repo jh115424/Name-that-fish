@@ -6,7 +6,7 @@ export class ClassFinalScore extends Component {
     this.state = {
       correctCount: 4,
       incorrectCount: 0,
-      totalCount: 4,
+      totalCount: 0,
     };
   }
 

@@ -24,14 +24,7 @@ const initialFishes = [
 export function FunctionalGameBoard(props) {
   const [userInput, setUserInput] = useState("");
 
-  const {
-    incorrectCount,
-    correctCount,
-    index,
-    fishGuess,
-    nextFishToHandleAnswer,
-    setState,
-  } = props;
+  const { index, nextFishToHandleAnswer } = props;
   return (
     <div id="game-board">
       <div id="fish-container">
@@ -40,27 +33,15 @@ export function FunctionalGameBoard(props) {
       <form
         id="fish-guess-form"
         onSubmit={(e) => {
-          nextFishToHandleAnswer(userInput);
           e.preventDefault();
-
-          setState({
-            fishGuess: "",
-            userInput: "",
-            correctCount:
-              userInput === initialFishes[index].name
-                ? correctCount + 1
-                : correctCount,
-            incorrectCount:
-              userInput !== initialFishes[index].name
-                ? incorrectCount + 1
-                : incorrectCount,
-          });
+          nextFishToHandleAnswer(userInput);
+          setUserInput("");
         }}
       >
         <label htmlFor="fish-guess">What kind of fish is this?</label>
         <input
           type="text"
-          value={fishGuess}
+          value={userInput}
           name="fish-guess"
           onChange={(e) => {
             setUserInput(e.target.value);

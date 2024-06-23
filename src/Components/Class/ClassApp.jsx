@@ -7,6 +7,7 @@ export class ClassApp extends Component {
   state = {
     incorrectCount: 0,
     correctCount: 0,
+    
     index: 0,
   };
 
