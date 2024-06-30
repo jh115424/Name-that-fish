@@ -13,7 +13,7 @@ export class ClassApp extends Component {
 
   nextFishToHandleAnswer = (fishNames) => {
     const { index, incorrectCount, correctCount } = this.state;
-    initialFishes[index].name === fishNames
+    initialFishes[index].name.toLowerCase() === fishNames.toLowerCase()
       ? this.setState({
           correctCount: correctCount + 1,
           index: index + 1,
@@ -42,6 +42,7 @@ export class ClassApp extends Component {
             <ClassGameBoard
               nextFishToHandleAnswer={this.nextFishToHandleAnswer}
               index={index}
+              initialFishes={initialFishes}
             />
           </>
         ) : (
@@ -50,7 +51,6 @@ export class ClassApp extends Component {
             incorrectCount={incorrectCount}
           />
         )}
-   
       </>
     );
   }

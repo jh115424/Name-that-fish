@@ -1,7 +1,7 @@
 import "./styles/final-score.css";
 // import {useState } from "react";
-export function FunctionalFinalScore({ correctCount, incorrectCount }) {
-  const totalCount = correctCount + incorrectCount;
+export function FunctionalFinalScore({ correctCount, wrongNumber }) {
+  const totalCount = correctCount + wrongNumber;
   return (
     <div id="final-score">
       <h1>Your Final Score Was</h1>
@@ -13,8 +13,5 @@ export function FunctionalFinalScore({ correctCount, incorrectCount }) {
     </div>
   );
 }
-
-
-
 
 

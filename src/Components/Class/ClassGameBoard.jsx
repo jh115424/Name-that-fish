@@ -43,6 +43,9 @@ export class ClassGameBoard extends Component {
           id="fish-guess-form"
           onSubmit={(e) => {
             e.preventDefault();
+            if (this.state.fishGuessInput === "") {
+              return;
+            }
             nextFishToHandleAnswer(this.state.fishGuessInput);
             this.setState({
               fishGuessInput: "",
